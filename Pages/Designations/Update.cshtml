@@ -1,0 +1,40 @@
+﻿@page
+@model Assingment.Pages.Designations.UpdateModel
+@{
+}
+@{
+    await Html.RenderPartialAsync("_Message");
+}
+<br />
+<div class="d-inline-flex">
+    <div>
+        <h1>Update Designation</h1>
+    </div>
+</div>
+
+<form asp-action="Create" method="post">
+    <div style="max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    text-align: center;
+    margin-top: 10px;
+    font-size:medium;
+    justify-content:space-between;
+    font-weight:600;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color:gold
+">
+        <div class="form-group row">
+            <label for="Name" class="col-sm-2 col-form-label">Designation </label>
+            @Html.HiddenFor(x => x.ID)
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.Title, new { placeholder = "Title", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+
+</form>

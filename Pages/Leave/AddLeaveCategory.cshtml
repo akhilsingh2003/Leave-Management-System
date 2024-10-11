@@ -1,0 +1,63 @@
+﻿@page
+@model Assingment.Pages.Leave.AddLeaveCategoryModel
+@{
+}
+<br />
+<div class="d-inline-flex">
+    <div>
+        <h1>Add Leave Category</h1>
+    </div>
+    <div>
+        <a asp-page="/Leave/LeaveCategoryList" style="text-decoration:none">
+            <button style="width:110px; height:60px; margin-left:800px; margin-top:2px; margin-bottom:12px; background-color:darkgreen; color:white; border-radius:4px; ">All Leave Categories</button>
+        </a>
+    </div>
+</div>
+
+<form asp-action="Create" method="post">
+    <div style="max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    text-align: center;
+    margin-top: 10px;
+    font-size:medium;
+    justify-content:space-between;
+    font-weight:600;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color:gold
+">
+        <div class="form-group row">
+            <label for="Name" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.Title, new { placeholder = "Title", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>
+        </div>
+        <br />
+        <div class="form-group row">
+            <label for="Email" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+                @Html.TextAreaFor(m => m.Description, new { placeholder = "Description", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Description)
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="form-group row">
+            <label for="Email" class="col-sm-2 col-form-label">Document Required</label>
+            <div class="col-sm-10">
+                <label>
+                    <input type="radio" name="IsDocumentRequired" value="true"> Yes
+                </label>
+                <label>
+                    <input type="radio" name="IsDocumentRequired" value="false"> No
+                </label>
+            </div>
+        </div>
+
+        <br />
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+
+</form>

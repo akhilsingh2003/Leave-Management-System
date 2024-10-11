@@ -1,0 +1,136 @@
+﻿@page
+@using Assingment.AppCode
+@model Assingment.Pages.Departments.DepartmentListModel
+@{
+}
+
+@{
+    await Html.RenderPartialAsync("_Message");
+}
+<br />
+<div class="d-inline-flex">
+    <div>
+        <h1>Department List</h1>
+    </div>
+    <div>
+        <a asp-page="/Departments/DepartmentAdd" style="text-decoration:none">
+            <button style="width:80px; height:60px; margin-left:900px; margin-top:2px; margin-bottom:12px; background-color:darkgreen; color:white; border-radius:4px; ">+ Add </button>
+
+        </a>
+    </div>
+</div>
+<br />
+<br/>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Created By</th>
+            <th scope="col">Updated By</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.DepartmentList)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.CreatedBy
+                    <br />
+                    @Html.DisplayDate(@item.CreatedOnUTC);
+                </td>
+                <td>
+                    @item.UpdatedBy
+                    <br />
+                    @Html.DisplayDate(@item.UpdatedOnUTC);
+
+
+                </td>
+                <td>
+                    <a href="/Departments/UpdateDepartment?id=@item.ID" style="text-decoration:none; font-size:larger">📝</a>
+                    <a href="#." title="Delete" onclick="ShowDelete(@item.ID);" style="text-decoration:none; font-size:larger">✖️</a>
+                </td>
+
+               
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-center">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+
+            <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+                <a class="page-link" href="?pageIndex=@(Model.PageIndex - 1)">Previous</a>
+            </li>
+
+            @for (var i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(Model.PageIndex == i ? "active" : "")">
+                    <a class="page-link" href="?pageIndex=@i">@i</a>
+                </li>
+            }
+
+            <li class="page-item @(@Model.PageIndex == @Model.TotalPages ? "disabled" : "")">
+                <a class="page-link" href="?pageIndex=@(Model.PageIndex + 1)">Next</a>
+            </li>
+
+        </ul>
+    </nav>
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are You Want to delete your Record ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" onclick="DeleteDepartment();">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+
+        var deldepartmentId = 0;
+        function ShowDelete(id) {
+            deldepartmentId = id;
+            $("#exampleModalCenter").modal("show");
+        }
+
+        function DeleteDepartment() {
+
+
+            $("#exampleModalCenter").modal("hide");
+            document.location.href = "/Departments/DepartmentList?handler=Delete&id=" + deldepartmentId;
+        }
+
+        /*   function NoHide() {
+               $("#exampleModalCenter").modal("hide");
+           }
+         */
+    </script>
+
+
+}
+
+
+

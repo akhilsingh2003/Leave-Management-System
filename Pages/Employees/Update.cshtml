@@ -1,0 +1,103 @@
+﻿@page
+@model Assingment.Pages.Employees.UpdateModel
+@{
+}
+
+@{
+    await Html.RenderPartialAsync("_Message");
+}
+<br />
+
+<div class="d-inline-flex">
+   <div>
+        <h1>Update Employee</h1>
+   </div> 
+</div>
+
+<form method="post" enctype="multipart/form-data">
+    <div style="max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    text-align: center;
+    margin-top: 10px;
+    font-size:medium;
+    justify-content:space-between;
+    font-weight:600;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color:gold
+">
+        <div class="form-group row">
+            @Html.HiddenFor(x => x.Id)
+            <label for="Name" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.Name, new { placeholder = "Name", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+        </div>
+        <br />
+        <div class="form-group row">
+            <label for="Email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group row">
+            <label for="Phone" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.Phone, new { placeholder = "Phone", @class = "form-control" })
+
+            </div>
+        </div>
+        <br />
+        <div class="form-group row">
+            <label for="Phone" class="col-sm-2 col-form-label">Department</label>
+            <div class="col-sm-10">
+
+                @Html.DropDownListFor(x => x.Department, new SelectList(@Model.DepartmentList),
+                         "Select Department", new { @class = "form-control" })
+
+            </div>
+        </div>
+        <br/>
+        <div class="form-group row">
+            <label for="Phone" class="col-sm-2 col-form-label">Designation</label>
+            <div class="col-sm-10">
+
+                @Html.DropDownListFor(x => x.Designation, new SelectList(@Model.DesignationList),
+                         "Select Designation", new { @class = "form-control" })
+
+            </div>
+        </div>
+
+    <br />
+    <div class="form-group row">
+        <label for="Phone" class="col-sm-2 col-form-label">Status</label>
+        <div class="col-sm-10">
+
+            @Html.DropDownListFor(x => x.Status, new SelectList(@Model.StatusList),
+                     "Select Status", new { @class = "form-control" })
+
+        </div>
+    </div>
+    <br />
+        <div class="form-group row">
+            <label for="ProfileImage" class="col-sm-2 col-form-label">Profile Picture</label>
+            <div class="col-sm-10">
+                <input type="file" id="ProfileImage" name="ProfileImage" class="form-control">
+            </div>
+        </div>
+    <br />
+    <button type="submit" class="btn btn-primary" id="btnAdd">Update</button>
+    </div>
+   
+</form>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}

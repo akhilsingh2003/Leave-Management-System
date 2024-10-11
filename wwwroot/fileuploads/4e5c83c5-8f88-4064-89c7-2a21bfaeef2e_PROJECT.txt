@@ -1,0 +1,21 @@
+Project Title: Food Ordering System
+This Food Ordering System with Source Code is a project that can order some food through the digital transaction of ordering.
+ The benefit of the system is to efficiently take the customer's order and give them a proper calculation in order to generate
+ a billing receipt.
+
+The project was built in a console application, the user can openly access the system without providing login information. 
+You can navigate the full menu by entering the corresponding keys display in the menu list. 
+The user can take the order of the customer after selecting in the menu, then he/she can give 
+the total price for the ordered item of the customer.
+ The system will auto calculate the ordered item including the quantity of the item and also the available discount.
+ This system can help those who have a catering business or any business that requires some automated ordering. 
+When you use this system it can efficiently automate your work and make a faster transaction for customers in no time.
+ The Food Ordering System is a simple project that can make you understand the basic way for coding in Python.
+
+Food Ordering System using Python with Source Code Features:
+(O) Order Menu
+From this menu you can select the customer order item by entering the corresponding numeric keys.
+(R) Report Menu
+In this menu you can view all the reports for the daily transcation.
+(P) Payment Menu
+For this menu you can receive the payment of the customer for the total ordered item.
