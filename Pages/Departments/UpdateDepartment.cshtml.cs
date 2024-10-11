@@ -7,6 +7,7 @@ using ServiceLayer;
 
 namespace Assingment.Pages.Departments
 {
+    [BindProperties]
     public class UpdateDepartmentModel : BaseModel
     {
 
